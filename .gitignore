@@ -1,1 +1,3 @@
 **/__pycache__/*
+dist/*
+src/databench_eval.egg-info/*
