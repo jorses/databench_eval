@@ -20,7 +20,7 @@ pip install databench-eval
 ## Basic Usage
 
 ```python
-from databench import Runner, Evaluator
+from databench_eval import Runner, Evaluator
 
 def model_call(prompts: list[str]) -> list[str]:
     """ Call your model on a batch of prompts here. """
@@ -36,11 +36,11 @@ acc_lite = Evaluator().eval(responses, lite=True)
 The runner is the class that calls the model.
 
 ### QA
-If not QA is provided, it will download the full QA set from DataBench.
+If not QA is provided, it will download the full QA set from databench_eval.
 You can choose any QA subset you might like, for example
 ```python
-from databench import Runner, Evaluator
-from databench.utils import load_qa
+from databench_eval import Runner, Evaluator
+from databench_eval.utils import load_qa
 
 qa = load_qa(name="semeval", split="dev")
 
@@ -57,7 +57,7 @@ For example, testing the effect of knowing (or not) the semantic beforehand in
 the function calls.
 
 ```python
-from databench.utils import load_table
+from databench_eval.utils import load_table
 def example_generator(row: dict) -> str:
 
     df = load_table(row["dataset"])
@@ -80,7 +80,7 @@ For example, let's say we have a model with a tendency to just continue rambling
 By default, no postprocessing is implemented.
 
 ```python
-from databench import Runner
+from databench_eval import Runner
 
 def custom_postp(response: str, dataset: str):
     return response.split("\n")[0]
@@ -127,7 +127,7 @@ The eval function of evaluator can be overridden, either by monkey-patching or b
 As a very simple example of the kind of behaviour that I'm talking about before, let's say that we would like for the order of list-like questions to be valid regardless of their order.
 
 ```python
-from databench import Evaluator
+from databench_eval import Evaluator
 
 def custom_compare(value, truth, semantic=None):
     """ Custom evaluation function. """

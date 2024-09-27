@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="databench_eval",
-    version="0.0.7",
+    version="1.0.0",
     author="jorses",
     author_email="jorgeosesgrijalba@gmail.com",
     description="Evaluation framework for DataBench",

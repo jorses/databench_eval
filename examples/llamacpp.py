@@ -4,7 +4,7 @@ import shlex
 import zipfile
 
 from datasets import Dataset
-from databench import Runner, Evaluator, utils
+from databench_eval import Runner, Evaluator, utils
 
 
 # this makes use of https://huggingface.co/TheBloke/stable-code-3b-GGUF
