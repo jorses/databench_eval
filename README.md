@@ -32,11 +32,13 @@ acc = Evaluator().eval(responses)
 acc_lite = Evaluator().eval(responses, lite=True)
 ```
 
+For more complex usage making use of the features described below, please refer to the examples folder.
+
 ## Runner
 The runner is the class that calls the model.
 
 ### QA
-If not QA is provided, it will download the full QA set from databench_eval.
+If no QA is provided, it will download the full QA set from databench_eval.
 You can choose any QA subset you might like, for example
 ```python
 from databench_eval import Runner, Evaluator
