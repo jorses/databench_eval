@@ -28,7 +28,7 @@ class Evaluator:
                 responses = f.read().splitlines()
 
         correct = 0
-        truths = self.qa["answer"]
+        truths = self.qa["answer"] if not lite else self.qa["sample_answer"]
 
         for response, truth in tqdm(zip(responses, truths), total=len(truths)):
             if self.compare(response, truth, "lite" if lite else None):
