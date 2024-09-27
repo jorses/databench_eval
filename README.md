@@ -9,6 +9,13 @@ very different approaches, I've developed a simple framework so that only three 
 * The actual **model call** (with batch support)
 * The **evaluation function** since what constitutes a valid answer is very system-dependant.
 
+We also streamline prompt generation and processing, so we have a good setup to iterate.
+
+## Installation
+
+````
+pip install databench-eval
+````
 
 ## Basic Usage
 
@@ -102,8 +109,10 @@ In the end how accurate or useful a model is to you heavily depends on what you 
 For example, someone looking to implement a solution that couples to a wider automated system where output format is key might want their responses
 to have a perfect very specific format, while other applications like chatbots would get away with any kind of format as long as a human could
 understand it.
+
 ### Compare Function
 We have provided a basic evaluation function that is meant to serve as base evaluator.
+This will be the function used to evaluate results in the Task 8 of SemEval 2025.
 
 ```python
 # Evaluator.default_compare
@@ -156,6 +165,11 @@ The main functions are:
 HF is supposed to download each file only once, then just read from the cache, but in my own testing it has been
 faster to just download the files locally and then passing the 
 Still I've decided to include the utils since they are convenient for easier testing.
+
+## Examples
+
+Check out the `examples` folder for more complex showcases of this library.
+`llamacpp.py` in particular carries out a full semeval 2025 task 8 submission.
 
 ## Contact
 
