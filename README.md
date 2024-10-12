@@ -113,20 +113,19 @@ to have a perfect very specific format, while other applications like chatbots w
 understand it.
 
 ### Compare Function
-We have provided a basic evaluation function that is meant to serve as base evaluator.
+
+We have provided a basic evaluation function that is meant to serve as base evaluator,
+and can be found in Evaluator.default_compare:
+* Numbers are truncated to the second decimal 23.1234 == 23.12
+* Categories are compared as-is
+* The order within the lists is not taken into account
+
 This will be the function used to evaluate results in the Task 8 of SemEval 2025.
 
-```python
-# Evaluator.default_compare
+The eval function of the evaluator can be overridden, either by monkey-patching or by using the `compare` argument in the Evaluator instantiation.
 
-def default_compare(value, truth, semantic=None):
-    """ Default evaluation function. """
-    return str(value).strip() == str(truth).strip()
-```
-
-The eval function of evaluator can be overridden, either by monkey-patching or by using the `compare` argument in the Evaluator instantiation.
-
-As a very simple example of the kind of behaviour that I'm talking about before, let's say that we would like for the order of list-like questions to be valid regardless of their order.
+As a very simple example of the kind of behaviour that we could customize, 
+let's say that we're looking for literal strict evaluations, but not taking into account order in lists. We would do something like the following:
 
 ```python
 from databench_eval import Evaluator
@@ -174,5 +173,7 @@ Check out the `examples` folder for more complex showcases of this library.
 `llamacpp.py` in particular carries out a full semeval 2025 task 8 submission.
 
 ## Contact
+This benchmark is still in active development and at the early stages of usage.
+If you find any mistakes please let me know.
 
 The easiest way to reach me is at jorgeosesgrijalba@gmail.com
