@@ -13,7 +13,7 @@ def call_gguf_model(prompts):
     results = []
     for p in prompts:
         escaped = p.replace('"', '\\"')
-        cmd = f'llama-cli -m ./models/stable-code-3b.Q4_K_M.gguf -p "{escaped}" -c 1024 -n 128'
+        cmd = f'llama-cli -m ./models/stable-code-3b.Q4_K_M.gguf -p "{escaped}" -c 1024 -n 128 -ngl -1'
         args = shlex.split(cmd)
         try:
             result = subprocess.run(args, capture_output=True, text=True, check=True)
