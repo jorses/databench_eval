@@ -16,6 +16,7 @@ class Evaluator:
         self.qa = qa if qa is not None else load_qa(**kwargs)
 
     def default_compare(self, value, truth, semantic):
+        semantic = semantic.strip()
         if semantic == "boolean":
             return str(value) == str(truth)
         elif semantic == "category":
