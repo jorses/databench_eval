@@ -18,9 +18,9 @@ class Evaluator:
     def default_compare(self, value, truth, semantic):
         semantic = semantic.strip()
         if semantic == "boolean":
-            return str(value) == str(truth)
+            return str(value).strip() == str(truth).strip()
         elif semantic == "category":
-            return str(value) == str(truth)
+            return str(value).strip() == str(truth).strip()
         elif semantic == "number":
             try:
                 value_cleaned = ''.join(char for char in str(value) if char.isdigit() or char in ['.', '-'])
