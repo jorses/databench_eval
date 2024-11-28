@@ -30,8 +30,8 @@ class Evaluator:
                 return False
         elif semantic == "list[category]":
             try:
-                value_list = [item.strip() for item in str(value).strip('[]').split(',')]
-                truth_list = [item.strip() for item in str(truth).strip('[]').split(',')]
+                value_list = [item.strip().strip("'").strip('"') for item in str(value).strip('[]').split(',')]
+                truth_list = [item.strip().strip("'").strip('"') for item in str(truth).strip('[]').split(',')]
                 if len(value_list) != len(truth_list):
                     return False
                 
