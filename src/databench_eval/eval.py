@@ -64,6 +64,19 @@ class Evaluator:
                     return set(value_list) == set(truth_list)
             except Exception as exc:
                 return False
+        elif semantic == "list[number]":
+            try:
+                value_list = sorted(round(float(''.join(c for c in v.strip() if c.isdigit() or c in ['.', '-'])), 2) for v in str(value).strip('[]').split(',') if v.strip())
+                truth_list = sorted(round(float(''.join(c for c in t.strip() if c.isdigit() or c in ['.', '-'])), 2) for t in str(truth).strip('[]').split(',') if t.strip())
+                
+                if len(value_list) != len(truth_list):
+                    return False
+                
+                return set(value_list) == set(truth_list)
+            except Exception as exc:
+                return False
+        else:
+            raise Exception(f"Semantic not supported: {semantic}")
 
     def eval(
         self,

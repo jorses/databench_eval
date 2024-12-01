@@ -1,5 +1,6 @@
 import pytest
 from databench_eval.eval import Evaluator
+from databench_eval.utils import load_qa
 
 def test_boolean_comparisons():
     evaluator = Evaluator()
@@ -98,3 +99,22 @@ def test_edge_cases():
     for value, truth, semantic, expected in test_cases:
         assert evaluator.default_compare(value, truth, semantic) == expected, \
             f"Failed edge case: {value} vs {truth} with semantic {semantic}"
+
+def test_eval_with_semeval_dev_set():
+    qa = load_qa()
+    evaluator = Evaluator(qa=qa)
+    
+    responses = qa["answer"]
+    evals = []
+    for response, truth, semantic in zip(responses, qa["answer"], qa["type"]):
+        truthy = evaluator.default_compare(response, truth, semantic)
+        evals.append(truthy)
+        if not truthy:
+            print(f"First failing case:")
+            print(f"Response: {response}")
+            print(f"Truth: {truth}") 
+            print(f"Semantic type: {semantic}")
+            break
+            
+    score = evaluator.eval(responses)
+    assert score == 1.0, "Evaluator should return 1.0 when comparing QA set against itself"
