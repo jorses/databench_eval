@@ -2,6 +2,7 @@ from typing import Callable, List, Union, Optional
 from .utils import load_qa
 from datasets import Dataset
 from tqdm import tqdm
+import pandas as pd
 
 
 class Evaluator:
@@ -16,11 +17,29 @@ class Evaluator:
         self.qa = qa if qa is not None else load_qa(**kwargs)
 
     def default_compare(self, value, truth, semantic):
+        STRIP_CHARS = "[]'\" "
         semantic = semantic.strip()
         if semantic == "boolean":
-            return str(value).strip() == str(truth).strip()
+            return str(value).strip(STRIP_CHARS).lower() == str(truth).strip(STRIP_CHARS).lower()
         elif semantic == "category":
-            return str(value).strip() == str(truth).strip()
+            if value is None and truth is None:
+                return True
+            if value is None or truth is None:
+                return False
+
+            value_str = str(value).strip(STRIP_CHARS)
+            truth_str = str(truth).strip(STRIP_CHARS)
+            if value_str == truth_str:
+                return True
+
+            try:
+                value_date = pd.to_datetime(value_str).date()
+                truth_date = pd.to_datetime(truth_str).date()
+                return value_date == truth_date
+            except (ValueError, TypeError):
+                if not value_str and not truth_str:
+                    return True
+                return value_str == truth_str
         elif semantic == "number":
             try:
                 value_cleaned = ''.join(char for char in str(value) if char.isdigit() or char in ['.', '-'])
@@ -30,29 +49,21 @@ class Evaluator:
                 return False
         elif semantic == "list[category]":
             try:
-                value_list = [item.strip().strip("'").strip('"') for item in str(value).strip('[]').split(',')]
-                truth_list = [item.strip().strip("'").strip('"') for item in str(truth).strip('[]').split(',')]
+                value_list = [item.strip(STRIP_CHARS) for item in str(value).strip('[]').split(',')]
+                truth_list = [item.strip(STRIP_CHARS) for item in str(truth).strip('[]').split(',')]
                 if len(value_list) != len(truth_list):
                     return False
-                
-                return set(value_list) == set(truth_list)
+
+                # Attempt to parse each item as a date
+                try:
+                    value_dates = [pd.to_datetime(item).date() for item in value_list]
+                    truth_dates = [pd.to_datetime(item).date() for item in truth_list]
+                    return set(value_dates) == set(truth_dates)
+                except (ValueError, TypeError):
+                    # If parsing as dates fails, compare as strings
+                    return set(value_list) == set(truth_list)
             except Exception as exc:
                 return False
-
-        elif semantic == "list[number]":
-            try:
-                value_list = sorted(round(float(''.join(c for c in v.strip() if c.isdigit() or c in ['.', '-'])), 2) for v in str(value).strip('[]').split(',') if v.strip())
-                truth_list = sorted(round(float(''.join(c for c in t.strip() if c.isdigit() or c in ['.', '-'])), 2) for t in str(truth).strip('[]').split(',') if t.strip())
-                
-                if len(value_list) != len(truth_list):
-                    return False
-                
-                return set(value_list) == set(truth_list)
-            except Exception as exc:
-                return False
-
-        else:
-            raise Exception(f"Semantic not supported: {semantic}")
 
     def eval(
         self,
