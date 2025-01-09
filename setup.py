@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="databench_eval",
-    version="2.1.1",
+    version="3.0.0",
     author="jorses",
     author_email="jorgeosesgrijalba@gmail.com",
     description="Evaluation framework for DataBench",
@@ -24,7 +24,8 @@ setup(
     install_requires=[
         "datasets",
         "tqdm",
-        "pandas",
+        "pandas"
+        "numpy",
         # Add other dependencies here
     ],
 )

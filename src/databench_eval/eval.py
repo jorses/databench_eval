@@ -1,9 +1,11 @@
-from typing import Callable, List, Union, Optional
-from .utils import load_qa
-from datasets import Dataset
-from tqdm import tqdm
 import pandas as pd
+import numpy as np
 
+from tqdm import tqdm
+from typing import Callable, List, Union, Optional
+from datasets import Dataset
+
+from .utils import load_qa
 
 class Evaluator:
     def __init__(
@@ -19,14 +21,20 @@ class Evaluator:
     def default_compare(self, value, truth, semantic):
         STRIP_CHARS = "[]'\" "
         semantic = semantic.strip()
-        if semantic == "boolean":
-            return str(value).strip(STRIP_CHARS).lower() == str(truth).strip(STRIP_CHARS).lower()
-        elif semantic == "category":
-            if value is None and truth is None:
-                return True
-            if value is None or truth is None:
-                return False
+        valid_null_set = [None, "nan", "", " ", np.nan, "np.nan", "None"]
 
+        if str(value).strip(STRIP_CHARS) in valid_null_set and str(truth).strip(STRIP_CHARS) in valid_null_set:
+            return True
+        if str(value).strip(STRIP_CHARS) in valid_null_set or str(truth).strip(STRIP_CHARS) in valid_null_set:
+            return False
+
+        if semantic == "boolean":
+            valid_true_values = ['true', 'yes', 'y']
+            valid_false_values = ['false', 'no', 'n']
+            value_str = str(value).strip(STRIP_CHARS).lower()
+            truth_str = str(truth).strip(STRIP_CHARS).lower()
+            return (value_str in valid_true_values and truth_str in valid_true_values) or (value_str in valid_false_values and truth_str in valid_false_values)
+        elif semantic == "category":
             value_str = str(value).strip(STRIP_CHARS)
             truth_str = str(truth).strip(STRIP_CHARS)
             if value_str == truth_str:
@@ -51,6 +59,13 @@ class Evaluator:
             try:
                 value_list = [item.strip(STRIP_CHARS) for item in str(value).strip('[]').split(',')]
                 truth_list = [item.strip(STRIP_CHARS) for item in str(truth).strip('[]').split(',')]
+                value_list = [
+                    v if v not in valid_null_set else ""
+                    for v in value_list
+                ]
+                truth_list = [
+                    t if t not in valid_null_set else "" for t in truth_list
+                ]
                 if len(value_list) != len(truth_list):
                     return False
 
@@ -66,9 +81,12 @@ class Evaluator:
                 return False
         elif semantic == "list[number]":
             try:
-                value_list = sorted(round(float(''.join(c for c in v.strip() if c.isdigit() or c in ['.', '-'])), 2) for v in str(value).strip('[]').split(',') if v.strip())
-                truth_list = sorted(round(float(''.join(c for c in t.strip() if c.isdigit() or c in ['.', '-'])), 2) for t in str(truth).strip('[]').split(',') if t.strip())
-                
+                value_list = sorted(float(''.join(c for c in v.strip() if c.isdigit() or c in ['.', '-'])) for v in str(value).strip('[]').split(',') if v.strip())
+                truth_list = sorted(float(''.join(c for c in t.strip() if c.isdigit() or c in ['.', '-'])) for t in str(truth).strip('[]').split(',') if t.strip())
+
+                value_list = [int(v * 100) / 100 for v in value_list]
+                truth_list = [int(t * 100) / 100 for t in truth_list]
+
                 if len(value_list) != len(truth_list):
                     return False
                 

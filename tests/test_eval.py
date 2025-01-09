@@ -11,6 +11,14 @@ def test_boolean_comparisons():
         ("False", "False", True),
         (" True ", "True", True),
         ("false", "False", True),
+        ("True", "yes", True),
+        ("False", "no", True),
+        ("True", "no", False),
+        ("False", "yes", False),
+        ("true", "yes", True),
+        ("false", "no", True),
+        ("yes", "yes", True),
+        ("no", "no", True),
         (None, "True", False),
     ]
     
@@ -118,3 +126,22 @@ def test_eval_with_semeval_dev_set():
             
     score = evaluator.eval(responses)
     assert score == 1.0, "Evaluator should return 1.0 when comparing QA set against itself"
+
+def test_eval_with_semeval_dev_set():
+    qa = load_qa()
+    evaluator = Evaluator(qa=qa)
+    
+    responses = qa["sample_answer"]
+    evals = []
+    for response, truth, semantic in zip(responses, qa["sample_answer"], qa["type"]):
+        truthy = evaluator.default_compare(response, truth, semantic)
+        evals.append(truthy)
+        if not truthy:
+            print(f"First failing case:")
+            print(f"Response: {response}")
+            print(f"Truth: {truth}") 
+            print(f"Semantic type: {semantic}")
+            break
+            
+    score = evaluator.eval(responses, lite=True)
+    assert score == 1.0, "Evaluator should return 1.0 when comparing QA set against itself in lite mode"
