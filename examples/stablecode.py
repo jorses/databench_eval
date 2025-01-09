@@ -92,10 +92,10 @@ runner_lite = Runner(
 
 responses = runner.run(save="predictions.txt")
 responses_lite = runner_lite.run(save="predictions_lite.txt")
-print(f"DataBench accuracy is {evaluator.eval(responses)}")  # ~0.16
+print(f"DataBench accuracy is {evaluator.eval(responses)}")
 print(
     f"DataBench_lite accuracy is {evaluator.eval(responses_lite, lite=True)}"
-)  # ~0.08
+)
 
 
 with zipfile.ZipFile("submission.zip", "w") as zipf:
