@@ -83,6 +83,7 @@ def test_list_category_comparisons():
         ("['a', 'b']", "['a', 'b', 'c']", False),  # Different lengths
         ("invalid", "['a', 'b']", False),
         (None, "['a', 'b']", False),
+        ("[nan]", "['']", True),
         # Test with dates
         ("['2023-01-01', '2023-01-02']", "['2023-01-02', '2023-01-01']", True),
         ("['2023-01-01T00:00:00Z', '2023-01-02 00:00:00+00:00']", "['2023-01-02', '2023-01-01']", True),
@@ -92,6 +93,25 @@ def test_list_category_comparisons():
     for value, truth, expected in test_cases:
         assert evaluator.default_compare(value, truth, "list[category]") == expected, \
             f"Failed list comparison: {value} vs {truth}"
+
+def test_list_number_comparisons():
+    evaluator = Evaluator()
+    # Additional test cases for list[number]
+    number_test_cases = [
+        ("[1, 2, 3]", "[3, 2, 1]", True),
+        ("1,2,3", "3,2,1", True),
+        ("[1, 2]", "[1, 2, 3]", False),  # Different lengths
+        ("invalid", "[1, 2]", False),
+        (None, "[1, 2]", False),
+        ("[1.1, 2.2]", "[2.2, 1.1]", True),
+        ("[1.0, 2.0]", "[2.0, 1.0]", True),
+        ("[1.0]", "[2.0]", False),
+        ("[0.995, 0.4924, 0.3099, 0.281]", "[0.99, 0.49, 0.30, 0.28]", True)
+    ]
+    
+    for value, truth, expected in number_test_cases:
+        assert evaluator.default_compare(value, truth, "list[number]") == expected, \
+            f"Failed list[number] comparison: {value} vs {truth}"
 
 def test_edge_cases():
     evaluator = Evaluator()
