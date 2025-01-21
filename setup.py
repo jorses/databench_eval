@@ -24,7 +24,7 @@ setup(
     install_requires=[
         "datasets",
         "tqdm",
-        "pandas"
+        "pandas",
         "numpy",
         # Add other dependencies here
     ],
