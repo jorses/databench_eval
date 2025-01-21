@@ -158,14 +158,9 @@ By default, the Evaluator processes the dataset in batches of 10. You can change
 ## Utils
 
 Although decoupled from the main classes, I've included a couple of useful functions in here.
-The main functions are:
 
 * load_qa: load the qa sets from HuggingFace
 * load_table: loads a data table from a given id (the "dataset" column of the QA table) from HuggingFace
-
-HF is supposed to download each file only once, then just read from the cache, but in my own testing it has been
-faster to just download the files locally and then passing the 
-Still I've decided to include the utils since they are convenient for easier testing.
 
 ## Examples
 
