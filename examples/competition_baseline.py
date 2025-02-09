@@ -12,6 +12,8 @@ from databench_eval import Runner, Evaluator
 * It scores ~26% in DataBench and ~27% in DataBench lite.
 * To run this file, make use of the answers.zip file as well as the data files
 you were provided with in the competition phase.
+* It only makes use of a quantized version of a tiny 3B model, which can be run locally
+on most consumer hardware on CPU. No finetuning or further configuration is needed.
 
 The test part will be available in the DataBench HuggingFace page soon.
 """
