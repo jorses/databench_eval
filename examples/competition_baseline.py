@@ -114,7 +114,7 @@ with open("semantics.txt", "r") as f:
 
 # Load the dataset column from the specified file
 qa_df = pd.read_csv(
-    "/Users/brick/Desktop/databench_package/databench/databench_eval/databench_test/test_qa.csv"
+    "test_qa.csv" # file provided in the competition
 )
 qa_df["answer"] = answers
 qa_df["sample_answer"] = sample_answers
