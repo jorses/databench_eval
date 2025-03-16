@@ -6,6 +6,7 @@ from typing import Callable, List, Union, Optional
 from datasets import Dataset
 
 from .utils import load_qa
+import math
 
 class Evaluator:
     def __init__(
@@ -52,7 +53,7 @@ class Evaluator:
             try:
                 value_cleaned = ''.join(char for char in str(value) if char.isdigit() or char in ['.', '-'])
                 truth_cleaned = ''.join(char for char in str(truth) if char.isdigit() or char in ['.', '-'])
-                return round(float(value_cleaned), 2) == round(float(truth_cleaned), 2)
+                return math.trunc(float(value_cleaned) * 100) == math.trunc(float(truth_cleaned) * 100)
             except:
                 return False
         elif semantic == "list[category]":

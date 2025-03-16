@@ -2,15 +2,27 @@ import pandas as pd
 from datasets import load_dataset, Dataset
 
 
-def load_qa(**kwargs) -> Dataset:
+def load_qa(lang: str = "EN", **kwargs) -> Dataset:
+    if lang == "EN":
+        dataset_name = "cardiffnlp/databench"
+    elif lang == "ES":
+        dataset_name = "SINAI/databenchSPA"
+    else:
+        raise ValueError("Only EN and ES available for lang parameter")
     return load_dataset(
-        "cardiffnlp/databench", **{"name": "qa", "split": "train", **kwargs}
+        dataset_name, **{"name": "qa", "split": "train", **kwargs}
     )
 
 
-def load_table(name):
+def load_table(name, lang: str = "EN"):
+    if lang == "EN":
+        base = "cardiffnlp/databench/data"
+    elif lang == "ES":
+        base = "SINAI/databenchSPA"
+    else:
+        raise ValueError("Only EN and ES available for lang parameter")
     return pd.read_parquet(
-        f"hf://datasets/cardiffnlp/databench/data/{name}/all.parquet"
+        f"hf://datasets/{base}/{name}/all.parquet"
     )
 
 

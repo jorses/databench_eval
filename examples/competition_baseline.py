@@ -8,7 +8,7 @@ from datasets import Dataset
 from databench_eval import Runner, Evaluator
 
 """
-* This is the baseline evaluation for the January Competition.
+* This is the baseline evaluation for the January SemEval 2025 Competition.
 * It scores ~26% in DataBench and ~27% in DataBench lite.
 * To run this file, make use of the answers.zip file as well as the data files
 you were provided with in the competition phase.
