@@ -67,7 +67,7 @@ class Runner:
     def save_responses(self, save_path: str) -> None:
         with open(save_path, "w") as f:
             for response in self.responses:
-                f.write(str(response) + "\n")
+                f.write(str(response).replace("\n", " ") + "\n")
 
     def postprocess(self, response, dataset):
         return response
