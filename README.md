@@ -38,8 +38,10 @@ For more complex usage making use of the features described below, please refer 
 The runner is the class that calls the model.
 
 ### QA
-If no QA is provided, it will download the full QA set from databench_eval.
-You can choose any QA subset you might like, for example
+
+If no QA is provided, it will download the full QA English set from databench_eval.
+You can choose any QA subset you might like, for example:
+
 ```python
 from databench_eval import Runner, Evaluator
 from databench_eval.utils import load_qa
@@ -49,7 +51,19 @@ qa = load_qa(name="semeval", split="dev")
 Runner(model_call, qa=qa_dev).run()
 ```
 
+In order to download the files for the PRESTA 2025 Iberlef competition:
+
+```python
+from databench_eval import Runner, Evaluator
+from databench_eval.utils import load_qa
+
+qa_train = load_qa(lang="ES", name="iberlef", split="train")
+qa_dev = load_qa(lang="ES", name="iberlef", split="dev")
+
+```
+
 ### Prompt Generation
+
 Instead of prompts, you might pass a `prompt_generator` function to the Runner.
 This receives a row from the qa dataset and is
 expected to return a string containing the prompt.
@@ -63,6 +77,24 @@ from databench_eval.utils import load_table
 def example_generator(row: dict) -> str:
 
     df = load_table(row["dataset"])
+    question = row["question"]
+    semantic = row["type"]
+    return f'''
+    # You must complete the following function
+    def answer(df: pd.DataFrame) -> {semantic}:
+        """Returns the answer to {question}"""
+        df.columns = {list(df.columns)}
+        return'''
+custom_runner = Runner(model_call, prompt_generator=prompt_generator)
+```
+
+To load a dataset in Spanish simply pass the `lang="ES"` to `utils.load_table`:
+
+```python
+from databench_eval.utils import load_table
+def example_generator(row: dict) -> str:
+
+    df = load_table(row["dataset"], lang="ES")
     question = row["question"]
     semantic = row["type"]
     return f'''
@@ -90,8 +122,8 @@ def custom_postp(response: str, dataset: str):
 custom_runner = Runner(model_call, postprocess=custom_postp)
 ```
 
-The actual returns of the model_calls will be stored in Runner.raw_responses,
-while the 
+The actual returns of the model_calls will be stored in `Runner.raw_responses`,
+while the post-processed are stored in `Runner.responses`.
 
 ### Number of batches
 
@@ -99,8 +131,9 @@ By default, the Runner processes the dataset in batches of 10. You can change th
 
 ### Save to File
 
-You can save the model responses to a txt file. The format will be that used during the SemEval 2025 competition,
+You can save the model responses to a txt file. The format will be that used during the SemEval 2025 and Iberlef 2025 competitions,
 one result per line.
+
 ```
 Runner.run(..., save="/path/to/responses.txt")
 ```
@@ -109,13 +142,16 @@ Runner.run(..., save="/path/to/responses.txt")
 
 In the end how accurate or useful a model is to you heavily depends on what you want to do with the model responses.
 For example, someone looking to implement a solution that couples to a wider automated system where output format is key might want their responses
-to have a perfect very specific format, while other applications like chatbots would get away with any kind of format as long as a human could
+to have a picture perfect very specific format, while other applications like chatbots would get away with any kind of format as long as a human could
 understand it.
+
+Our default evaluators are built with the competitions in mind, and so try to deal with specific edge-cases found in SemEval in order to be fair with all participants.
 
 ### Compare Function
 
 We have provided a basic evaluation function that is meant to serve as base evaluator,
-and can be found in Evaluator.default_compare:
+and can be found in `Evaluator.default_compare`:
+
 * Numbers are truncated to the second decimal 23.1234 == 23.12
 * Categories are compared as-is
 * The order within the lists is not taken into account
@@ -165,7 +201,8 @@ Although decoupled from the main classes, I've included a couple of useful funct
 ## Examples
 
 Check out the `examples` folder for more complex showcases of this library.
-`llamacpp.py` in particular carries out a full semeval 2025 task 8 submission.
+`codellama7.py` in particular carries out a full semeval 2025 task 8 submission,
+while `iberlef_baseline_4o_mini.py` creates a full submission for Iberlef 2025.
 
 ## Contact
 This benchmark is still in active development and at the early stages of usage.
