@@ -1,0 +1,101 @@
+question,dataset
+¿Hay alguien en el conjunto de datos que tenga 100 años o más?,ES_01_40db_Igualdad
+¿Tienen las mujeres baby-boomers de la generación silenciosa un valor propio en la columna que combina sexo y generación?,ES_01_40db_Igualdad
+¿Cuál es el género más común en el conjunto de datos?,ES_01_40db_Igualdad
+¿Qué provincia es la primera en orden de aparición tras ordenarlas alfabéticamente?,ES_01_40db_Igualdad
+¿Cuál es la media de hijos que las personas tienen o creen que van a tener?,ES_01_40db_Igualdad
+¿Cuál es la edad mediana de los participantes?,ES_01_40db_Igualdad
+¿Cuáles son los valores únicos en la columna 'Sexo'?,ES_01_40db_Igualdad
+¿Qué categorías distintas hay en la columna resultante de recodificar la clase social?,ES_01_40db_Igualdad
+¿Cuáles son los valores mínimo y máximo de la escala de autoubicación política izquierda-derecha?,ES_01_40db_Igualdad
+¿Cuáles son las tres edades más comunes en el conjunto de datos?,ES_01_40db_Igualdad
+¿Hay más personas que trabajan que pensionistas?,ES_02_40dB_Dormir
+¿Hay algún encuestado que duerma 6 minutos en días laborables?,ES_02_40dB_Dormir
+¿Cuál es la Comunidad Autónoma con más encuestados?,ES_02_40dB_Dormir
+¿Qué clase social recodificada es la más común?,ES_02_40dB_Dormir
+¿Cuál es la edad media de los encuestados?,ES_02_40dB_Dormir
+¿Cuántas personas tienen menos de 6 horas de sueño normalmente en días laborables?,ES_02_40dB_Dormir
+¿Cuáles son las dos ocupaciones más comunes?,ES_02_40dB_Dormir
+¿Qué dos partidos aparecen con más frecuencia en la intención de voto?,ES_02_40dB_Dormir
+¿Cuáles son las tres horas de duración de sueño más comunes en vacaciones?,ES_02_40dB_Dormir
+¿Cuáles son los tres valores más comunes en la escala de satisfacción con la vida?,ES_02_40dB_Dormir
+¿Hay alguien de Ceuta?,ES_03_CIS_Enero_Marzo_2023
+¿Es 'PP' el partido más común en la intención de voto?,ES_03_CIS_Enero_Marzo_2023
+¿Cuál es la ideología más común?,ES_03_CIS_Enero_Marzo_2023
+¿Qué Comunidad Autónoma tiene más registros?,ES_03_CIS_Enero_Marzo_2023
+¿Cuántos municipios únicos están presentes?,ES_03_CIS_Enero_Marzo_2023
+¿Cuál es la media de la Ponderación autonómica (redondeada a 4 decimales)?,ES_03_CIS_Enero_Marzo_2023
+¿Cuáles son los dos partidos que aparecen con más frecuencia en la intención de voto?,ES_03_CIS_Enero_Marzo_2023
+Enumera los tres estados civiles más comunes.,ES_03_CIS_Enero_Marzo_2023
+¿Cuáles son los tres valores más comunes de 'Número de registro'?,ES_03_CIS_Enero_Marzo_2023
+Enumera los tres valores más altos de 'Cuestionario'.,ES_03_CIS_Enero_Marzo_2023
+¿Hay algún encuestado de Almería?,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Todos los encuestados tienen más de 18 años?,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Qué provincia tiene el mayor número de encuestados?,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Cuál es el género más común en el conjunto de datos?,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Cuántas provincias únicas están representadas en el conjunto de datos?,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Cuál es la edad promedio de los encuestados? No redondees.,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+Enumera todos los niveles educativos únicos reportados por los encuestados como los más altos que han alcanzado (sin repeticiones).,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Cuáles son los distintos tipos de respuestas sobre satisfacción con los ingresos?,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+Enumera las edades distintas de los encuestados menores de 25 años.,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+Enumera los pesos de encuesta (PESO) únicos mayores que 1.,ES_04_CEA_Barometro_Andaluz_Septiembre_2023
+¿Hay algún encuestado mayor de 80 años?,ES_05_CIS_2023_Salud_Bienestar
+¿Todos los encuestados residen en Madrid?,ES_05_CIS_2023_Salud_Bienestar
+¿Cuál es el género más común en la encuesta?,ES_05_CIS_2023_Salud_Bienestar
+¿Cuál es el nivel educativo más alto terminado registrado más frecuente?,ES_05_CIS_2023_Salud_Bienestar
+¿Cuál es la edad media de los encuestados (redondeada al número entero más cercano)?,ES_05_CIS_2023_Salud_Bienestar
+¿Cuál es el número máximo de problemas de alta frecuencia reportados por un encuestado?,ES_05_CIS_2023_Salud_Bienestar
+¿En qué provincias residen entre uno y tres encuestados?,ES_05_CIS_2023_Salud_Bienestar
+"¿Qué estados de actividad están registrados solo una vez en el conjunto de datos? Si no hay ninguno contesta con una lista vacía""",ES_05_CIS_2023_Salud_Bienestar
+"¿Cuáles son los dos valores más pequeños de ""Número de problemas con alta frecuencia""?",ES_05_CIS_2023_Salud_Bienestar
+"¿Cuáles son los dos valores más comunes de ""Frecuencia de problemas P53""?",ES_05_CIS_2023_Salud_Bienestar
+¿Existe alguna entrevista marcada como 'Entrevista válida'?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Se realizaron entrevistas utilizando teléfonos móviles?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuál es la primera comunidad autónoma listada en el conjunto de datos?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuál es la provincia que aparece con mayor frecuencia en el conjunto de datos?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuál es el valor medio del peso (Ponderación)?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuál es el valor máximo del peso (Ponderación)?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuáles son los tipos únicos de teléfono utilizados en las entrevistas?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuáles son las tres clasificaciones de capital más frecuentes?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuáles son los cinco valores únicos más pequeños de ponderación utilizados en el conjunto de datos?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿Cuáles son los cinco valores únicos más pequeños de 'Número de registro'?,ES_06_CIS_Politica_Fiscal_Julio_2023
+¿La mayoría de las personas entrevistadas tenían móvil como tipo de teléfono?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Hay registros de entrevistas realizadas en Andalucía?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿En qué provincia andaluza se realizaron más entrevistas?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Cuál es el nivel de estudios más común (alcanzado) entre las personas entrevistadas?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Cuál es la edad media de los entrevistados?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Cuál es la media de felicidad reportada en la escala de 1 a 10? Ignora aquellos que no contestaron o no sabían.,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Cuáles son las dos comunidades autónomas más presentes en el estudio?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Cuáles son las dos provincias más encuestadas?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Qué dos edades aparecen más frecuentemente en la muestra?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Qué dos puntuaciones de felicidad diferentes se observaron con más frecuencia?,ES_07_CIS_Relaciones_Afectivas_Pospandemia_III
+¿Existe algún municipio con más de 400.000 habitantes en el dataset?,ES_08_CIS_Barometro_Diciembre_2022
+¿Hay entrevistas realizadas en la provincia de Almería?,ES_08_CIS_Barometro_Diciembre_2022
+¿Qué partido aparece como voto recordado para las elecciones generales de 2019?,ES_08_CIS_Barometro_Diciembre_2022
+¿Cuál es la clase social subjetiva más frecuente según la identificación de los entrevistados?,ES_08_CIS_Barometro_Diciembre_2022
+¿Cuál es el número total de registros en el dataset?,ES_08_CIS_Barometro_Diciembre_2022
+¿Cuántas comunidades autónomas diferentes aparecen en el dataset?,ES_08_CIS_Barometro_Diciembre_2022
+¿Qué partidos políticos (filtrados y recodificados) son mencionados como intención de voto en unas posibles generales en Andalucía?,ES_08_CIS_Barometro_Diciembre_2022
+¿Qué rangos de tamaños de municipio están presentes en los datos?,ES_08_CIS_Barometro_Diciembre_2022
+¿Cuáles son los tres códigos de estudio (pueden repetirse) para los tres primeros registros?,ES_08_CIS_Barometro_Diciembre_2022
+¿Qué números de registro corresponden a las entrevistas de las tres primeras filas?,ES_08_CIS_Barometro_Diciembre_2022
+¿Existe al menos una persona que viva en Barcelona?,ES_09_40dB_Percepcion_Amor
+¿Existe alguien que haya declarado su orientación sexual como Asexual?,ES_09_40dB_Percepcion_Amor
+¿Cuál es la comunidad autónoma de la primera persona registrada?,ES_09_40dB_Percepcion_Amor
+¿Cuál es el partido votado en las elecciones de 2019 por la segunda persona?,ES_09_40dB_Percepcion_Amor
+¿Cuál es la edad de la tercera persona en el registro?,ES_09_40dB_Percepcion_Amor
+¿Qué nota de importancia le da a la independencia la primera persona?,ES_09_40dB_Percepcion_Amor
+¿Qué partidos nacionales han votado las dos primeras personas? Contesta con una lista,ES_09_40dB_Percepcion_Amor
+¿Qué orientaciones sexuales (únicas) se encuentran en los primeros cuatro registros?,ES_09_40dB_Percepcion_Amor
+¿Qué edades tienen las tres primeras personas?,ES_09_40dB_Percepcion_Amor
+¿Qué puntuaciones de satisfacción en su relación tienen las dos primeras personas?,ES_09_40dB_Percepcion_Amor
+¿Todas las entrevistas fueron realizadas mediante teléfono móvil?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Existe al menos una persona entrevistada que haya votado por PACMA en 2019?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Qué tipo de teléfono es el más utilizado en las entrevistas?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Cuál es la comunidad autónoma de origen de la primera entrevistas?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Cuántos entrevistados de los primeros 20 tienen estudios superiores?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Cuántos entrevistados se identifican subjetivamente como Clase media media?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Qué partidos políticos (sin recodificar) fueron recordados como voto en las elecciones de 2019 entre los entrevistados? Incluye también aquellos valores que no corresponden a un partido político sino a opciones diferentes de voto.,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Cuáles son las religiones o creencias reportadas entre los primeros 20 entrevistados?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Qué edades tienen las cinco primeras personas entrevistadas?,ES_10_CIS_Salud_Mental_Pandemia_2021
+¿Qué códigos de estudio (sin repeticiones) aparecen en los primeros 20 registros? Contesta con una lista,ES_10_CIS_Salud_Mental_Pandemia_2021
